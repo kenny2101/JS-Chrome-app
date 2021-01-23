@@ -11,15 +11,17 @@ function getWeather(lat, long) {
       return response.json();
     })
     .then(function (json) {
+      const placeweather = json.weather[0].main;
       const temperature_now = json.main.temp;
       const temperature_max = json.main.temp_max;
       const temperature_min = json.main.temp_min;
       const place = json.name;
       const country = json.sys.country;
       WEATHER.innerText = `@ ${country} : ${place}
-      현재 : ${temperature_now}℃
-      최고 : ${temperature_max}℃
-      최저 : ${temperature_min}℃`;
+      ${placeweather}
+      now : ${temperature_now}℃
+      max : ${temperature_max}℃
+      min : ${temperature_min}℃`;
     });
 }
 
